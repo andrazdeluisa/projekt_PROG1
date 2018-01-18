@@ -65,14 +65,15 @@ def get_resorts_blocks(page):
 
 
 def get_dict_from_resort_stats_block(block):
-    rx = re.compile(r'<a class="h3" href="http://www.skiresort.info/ski-resort/(.*?)">(?P<name>.*?)</a>(.*?)<div class="sub-breadcrumb"><a href="http://www.skiresort.info/ski-resorts/(.*?)/">'
-                    r'(?P<continent>.*?)</a> <a href="http://www.skiresort.info/ski-resorts/(.*?)/">'
-                    r'(?P<country>.*?)</a> <a href="http://www.skiresort.info/ski-resorts/(.*?)/">'
+    rx = re.compile(r'<a class="h3" href="http://www.skiresort.info/ski-resort/(.+?)/">(?P<name>.*?)</a>(.*?)<div class="sub-breadcrumb"><a href="http://www.skiresort.info/ski-resorts/(.*?)/">'
+                    r'(?P<continent>.*?)</a> <a href="http://www.skiresort.info/ski-resorts/(.+?)/">'
+                    r'(?P<country>.*?)</a> <a href="http://www.skiresort.info/ski-resorts/(.+?)/">'
                     r'(?P<region>.*?)</a>(.*?)data-rank="'
-                    r'(?P<rank>.*?)" style=(.*?)<td> <span >'
-                    r'(?P<elevation difference>.*?)</span> (<span >'
-                    r'(?P<base altitude>.*?)</span> - <span>'
-                    r'(?P<peak altitude>.*?)</span>)(.*?)class="slopeinfoitem ">'
+                    r'(?P<rank>.*?)" style=(.*?)</td> <td> <span >'
+#                    r'(?P<elevation difference>.*?)</span> (<span >'
+#                    r'(?P<base altitude>.*?)</span> - <span>'
+#                    r'(?P<peak altitude>.*?)</span>)(.*?)class="slopeinfoitem ">'
+                    r'(.*?)class="slopeinfoitem ">'
                     r'(?P<length>.*?)</span> <span class="slopeinfoitem blue">'
                     r'(?P<blue length>.*?)</span> <span class="slopeinfoitem red">'
                     r'(?P<red length>.*?)</span> <span class="slopeinfoitem black">'
@@ -98,22 +99,22 @@ def write_csv(fieldnames, rows, filename):
         writer.writeheader()
         for row in rows:
             writer.writerow(row)
-    return
+    return 
 
 def write_resorts_to_csv(resorts, filename):
     write_csv(resorts[0].keys(), resorts, filename)
     
-resort_dict = resorts_stats_from_file(resorts_filename)
-write_resorts_to_csv(resort_dict, resorts_csv_filename)
+resorts = get_resorts_blocks(read_file_to_string(resorts_filename))
 
 
+def print_to_file(x, file):
+    with open(file, 'w', encoding='utf-8') as file:
+        for block in x:
+            file.write(str(block) + '\n')
+    return
 
 
-
-
-
-
-
+        
 
 
 
