@@ -1,4 +1,4 @@
-name,dd,td
+Name,DD,TD
 James Harden,64,22
 Russell Westbrook,62,42
 Karl-Anthony Towns,62,1
@@ -43,7 +43,7 @@ Greg Monroe,13,0
 Jusuf Nurkic,13,0
 Gorgui Dieng,13,0
 Kristaps Porzingis,12,0
-Otto Porter Jr.,12,0
+Otto Porter,12,0
 Robert Covington,12,0
 Tyson Chandler,12,0
 Damian Lillard,11,0
@@ -85,7 +85,7 @@ Aaron Gordon,7,0
 Thaddeus Young,7,0
 David Lee,7,0
 Tim Frazier,7,1
-Larry Nance Jr.,7,0
+Larry Nance Jr,7,0
 Goran Dragic,6,0
 Terrence Jones,6,0
 Cody Zeller,6,0
@@ -102,7 +102,7 @@ Marcus Morris,5,0
 Richaun Holmes,5,0
 Tony Allen,5,0
 Luol Deng,5,0
-T.J. McConnell,5,0
+TJ McConnell,5,0
 Bobby Portis,5,0
 Boban Marjanovic,5,0
 Joakim Noah,5,0
@@ -137,7 +137,7 @@ Brandon Jennings,3,0
 PJ Tucker,3,0
 Spencer Hawes,3,0
 Nemanja Bjelica,3,0
-Glenn Robinson III,3,0
+Glenn Robinson,3,0
 Cheick Diallo,3,0
 Cristiano Felicio,3,0
 Ed Davis,3,0
@@ -194,8 +194,8 @@ Timofey Mozgov,1,0
 Anthony Tolliver,1,0
 Justin Hamilton,1,0
 Patrick Patterson,1,0
-James Ennis III,1,0
-Kelly Oubre Jr.,1,0
+James Ennis,1,0
+Kelly Oubre,1,0
 Trey Lyles,1,0
 Lance Thomas,1,0
 Jerian Grant,1,0
@@ -229,7 +229,7 @@ JJ Redick,0,0
 Gary Harris,0,0
 Jordan Clarkson,0,0
 Khris Middleton,0,0
-Tim Hardaway Jr.,0,0
+Tim Hardaway,0,0
 Jordan Crawford,0,0
 Bojan Bogdanovic,0,0
 Tyler Johnson,0,0
@@ -337,7 +337,7 @@ Paul Zipser,0,0
 Joffrey Lauvergne,0,0
 Malcolm Delaney,0,0
 Chasson Randle,0,0
-Derrick Jones Jr.,0,0
+Derrick Jones,0,0
 Mike Dunleavy,0,0
 Randy Foye,0,0
 Omri Casspi,0,0
@@ -360,7 +360,7 @@ Isaiah Canaan,0,0
 Boris Diaw,0,0
 Kris Humphries,0,0
 Reggie Bullock,0,0
-C.J. Watson,0,0
+CJ Watson,0,0
 Corey Brewer,0,0
 Davis Bertans,0,0
 Reggie Williams,0,0
@@ -391,17 +391,17 @@ Adreian Payne,0,0
 Tyus Jones,0,0
 Brian Roberts,0,0
 Rashad Vaughn,0,0
-Johnny O'Bryant III,0,0
+Johnny O'Bryant,0,0
 Jose Calderon,0,0
 Dejounte Murray,0,0
 Kyle Anderson,0,0
 Jared Sullinger,0,0
-Gary Payton II,0,0
+Gary Payton,0,0
 Norris Cole,0,0
 Nicolas Laprovittola,0,0
 Darrun Hilliard,0,0
 Paul Pierce,0,0
-Wade Baldwin IV,0,0
+Wade Baldwin,0,0
 Briante Weber,0,0
 Jakob Poeltl,0,0
 Jarrett Jack,0,0
@@ -483,5 +483,5 @@ John Lucas III,0,0
 Aaron Harrison,0,0
 Patricio Garino,0,0
 R.J. Hunter,0,0
-Danuel House Jr.,0,0
+Danuel House,0,0
 Ben Bentil,0,0
