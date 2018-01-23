@@ -8,13 +8,17 @@ import csv
 
 salaries_link = 'http://www.spotrac.com/nba/rankings/2016/cap-hits/'
 stats_link = 'https://www.basketball-reference.com/leagues/NBA_2017_per_game.html'
+double_doubles_link = 'http://www.espn.com/nba/statistics/player/_/stat/double-doubles/sort/doubleDouble/year/2017/qualified/false/count/'
 directory = 'web_pages'
 salaries_basename = 'salaries.html'
 stats_basename = 'stats.html'
+double_doubles_basename = 'dd.html'
 salaries_filename = os.path.join(directory, salaries_basename)
 stats_filename = os.path.join(directory, stats_basename)
+double_doubles_filename = os.path.join(directory, double_doubles_basename)
 salaries_csv_filename = 'salaries.csv'
 stats_csv_filename = 'stats.csv'
+double_doubles_csv_filename = 'dd.csv'
 
 
 def download_url_to_string(url):
@@ -33,6 +37,13 @@ def save_string_to_file(text, filename):
 
 def save_frontpage_to_file(url, filename):
     pagecontent = download_url_to_string(url)
+    save_string_to_file(pagecontent, filename)
+    return
+
+def save_frontpage_to_file_dd(url, filename):
+    pagecontent = ''
+    for i in range(13):
+        pagecontent += download_url_to_string(url + '{}'.format(i*40 + 1))
     save_string_to_file(pagecontent, filename)
     return
 
@@ -107,7 +118,31 @@ def players_salaries_from_file(filename):
     blocks = page_to_players_salaries(page)
     players = [get_dict_from_player_salary_block(block) for block in blocks]
     return players
+
+#extracting double doubles stats
+
+def page_to_players_dd(page):
+    rx = re.compile(r'<a href="http://www.espn.com/nba/player/_/id/'
+                    r'(.*?)/td></tr>',
+                    re.DOTALL)
+    players = re.findall(rx, page)
+    return players
+
+def get_dict_from_player_dd_block(block):
+    rx = re.compile(r'>(?P<name>.*?)</a>.*class="sortcell">'
+                    r'(?P<dd>.*?)</td><td >'
+                    r'(?P<td>.*?)<',
+                    re.DOTALL)
+    data = re.search(rx, block)
+    player_dd_dict = data.groupdict()
+    return player_dd_dict
     
+def players_dd_from_file(filename):
+    page = read_file_to_string(filename)
+    blocks = page_to_players_dd(page)
+    players = [get_dict_from_player_dd_block(block) for block in blocks]
+    return players
+
 #writing csv
 
 def write_csv(fieldnames, rows, filename):
@@ -120,8 +155,6 @@ def write_csv(fieldnames, rows, filename):
 
 def write_players_to_csv(players, filename):
     write_csv(players[0].keys(), players, filename)
-
-
 
 
 
