@@ -9,16 +9,20 @@ import csv
 salaries_link = 'http://www.spotrac.com/nba/rankings/2016/cap-hits/'
 stats_link = 'https://www.basketball-reference.com/leagues/NBA_2017_per_game.html'
 double_doubles_link = 'http://www.espn.com/nba/statistics/player/_/stat/double-doubles/sort/doubleDouble/year/2017/qualified/false/count/'
+team_stats_link = 'https://www.basketball-reference.com/leagues/NBA_2017.html'
 directory = 'web_pages'
 salaries_basename = 'salaries.html'
 stats_basename = 'stats.html'
 double_doubles_basename = 'dd.html'
+team_stats_basename = 'team_stats.html'
 salaries_filename = os.path.join(directory, salaries_basename)
 stats_filename = os.path.join(directory, stats_basename)
 double_doubles_filename = os.path.join(directory, double_doubles_basename)
+team_stats_filename = os.path.join(directory, team_stats_basename)
 salaries_csv_filename = 'salaries.csv'
 stats_csv_filename = 'stats.csv'
 double_doubles_csv_filename = 'dd.csv'
+team_stats_csv_filename = 'team_stats.csv'
 
 
 def download_url_to_string(url):
@@ -61,29 +65,29 @@ def page_to_players_stats(page):
     return players
 
 def get_dict_from_player_stats_block(block):
-    rx = re.compile(r'>(?P<index>.*?)<.*html">'
-                    r'(?P<name>.*?)<.*stat="pos" >'
-                    r'(?P<position>.*?)<.*stat="age" >'
-                    r'(?P<age>.*?)<.*stat="team_id" >(<a .*html">)?'
-                    r'(?P<team>.*?)<.*stat="g" >'
-                    r'(?P<games>.*?)<.*stat="gs" >'
-                    r'(?P<g_started>.*?)<.*stat="mp_per_g" >'
-                    r'(?P<minutes>.*?)<.*stat="fg_per_g" >'
-                    r'(?P<fg>.*?)<.*stat="fga_per_g" >'
-                    r'(?P<fga>.*?)<.*stat="fg_pct" >'
-                    r'(?P<fg_pct>.*?)<.*stat="ft_per_g" >'
-                    r'(?P<ft>.*?)<.*stat="fta_per_g" >'
-                    r'(?P<fta>.*?)<.*stat="ft_pct" >'
-                    r'(?P<ft_pct>.*?)<.*stat="orb_per_g" >'
-                    r'(?P<oreb>.*?)<.*stat="drb_per_g" >'
-                    r'(?P<dreb>.*?)<.*stat="trb_per_g" >'
-                    r'(?P<totreb>.*?)<.*stat="ast_per_g" >'
-                    r'(?P<assists>.*?)<.*stat="stl_per_g" >'
-                    r'(?P<steals>.*?)<.*stat="blk_per_g" >'
-                    r'(?P<blocks>.*?)<.*stat="tov_per_g" >'
-                    r'(?P<turnovers>.*?)<.*stat="pf_per_g" >'
-                    r'(?P<pfouls>.*?)<.*stat="pts_per_g" >'
-                    r'(?P<points>.*?)</td>',
+    rx = re.compile(r'>(?P<Index>.*?)<.*html">'
+                    r'(?P<Name>.*?)<.*stat="pos" >'
+                    r'(?P<Position>.*?)<.*stat="age" >'
+                    r'(?P<Age>.*?)<.*stat="team_id" >(<a .*html">)?'
+                    r'(?P<Team>.*?)<.*stat="g" >'
+                    r'(?P<GP>.*?)<.*stat="gs" >'
+                    r'(?P<GS>.*?)<.*stat="mp_per_g" >'
+                    r'(?P<MIN>.*?)<.*stat="fg_per_g" >'
+                    r'(?P<FG>.*?)<.*stat="fga_per_g" >'
+                    r'(?P<FGA>.*?)<.*stat="fg_pct" >'
+                    r'(?P<FG_PCT>.*?)<.*stat="ft_per_g" >'
+                    r'(?P<FT>.*?)<.*stat="fta_per_g" >'
+                    r'(?P<FTA>.*?)<.*stat="ft_pct" >'
+                    r'(?P<FT_PCT>.*?)<.*stat="orb_per_g" >'
+                    r'(?P<OREB>.*?)<.*stat="drb_per_g" >'
+                    r'(?P<DREB>.*?)<.*stat="trb_per_g" >'
+                    r'(?P<TOTREB>.*?)<.*stat="ast_per_g" >'
+                    r'(?P<AST>.*?)<.*stat="stl_per_g" >'
+                    r'(?P<STL>.*?)<.*stat="blk_per_g" >'
+                    r'(?P<BLK>.*?)<.*stat="tov_per_g" >'
+                    r'(?P<TO>.*?)<.*stat="pf_per_g" >'
+                    r'(?P<PF>.*?)<.*stat="pts_per_g" >'
+                    r'(?P<PTS>.*?)</td>',
                     re.DOTALL)
     data = re.search(rx, block)
     player_stats_dict = data.groupdict()
@@ -106,8 +110,8 @@ def page_to_players_salaries(page):
 
 def get_dict_from_player_salary_block(block):
     rx = re.compile(r'class="team-name">'
-                    r'(?P<name>.*?)<.*title="(Reserve Suspended)?">'
-                    r'(?P<salary>.*?)\s',
+                    r'(?P<Name>.*?)<.*title="(Reserve Suspended)?">'
+                    r'(?P<Salary>.*?)\s',
                     re.DOTALL)
     data = re.search(rx, block)
     player_salary_dict = data.groupdict()
@@ -129,9 +133,9 @@ def page_to_players_dd(page):
     return players
 
 def get_dict_from_player_dd_block(block):
-    rx = re.compile(r'>(?P<name>.*?)</a>.*class="sortcell">'
-                    r'(?P<dd>.*?)</td><td >'
-                    r'(?P<td>.*?)<',
+    rx = re.compile(r'>(?P<Name>.*?)</a>.*class="sortcell">'
+                    r'(?P<DD>.*?)</td><td >'
+                    r'(?P<TD>.*?)<',
                     re.DOTALL)
     data = re.search(rx, block)
     player_dd_dict = data.groupdict()
@@ -142,6 +146,31 @@ def players_dd_from_file(filename):
     blocks = page_to_players_dd(page)
     players = [get_dict_from_player_dd_block(block) for block in blocks]
     return players
+
+#extracting team stats
+
+def page_to_team_stats(page):
+    rx = re.compile(r'<tr class="full_table" ><th scope="row" class="left " data-stat="team_name" >'
+                    r'(.*?)/td></tr>',
+                    re.DOTALL)
+    teams = re.findall(rx, page)
+    a = len(teams)
+    return teams[: a//2]
+
+def get_dict_from_team_stats_block(block):
+    rx = re.compile(r'/2017.html">(?P<TeamName>.*?)</a>.*<td class="right " data-stat="wins" >'
+                    r'(?P<Wins>.*?)</td><td class="right " data-stat="losses" >'
+                    r'(?P<Losses>.*?)</td><td class="right " data-stat="win_loss_pct" >',
+                    re.DOTALL)
+    data = re.search(rx, block)
+    team_stats_dict = data.groupdict()
+    return team_stats_dict
+
+def team_stats_from_file(filename):
+    page = read_file_to_string(filename)
+    blocks = page_to_team_stats(page)
+    teams = [get_dict_from_team_stats_block(block) for block in blocks]
+    return teams
 
 #writing csv
 
