@@ -1,31 +1,61 @@
-TeamName,Wins,Losses
-Boston Celtics,53,29
-Cleveland Cavaliers,51,31
-Toronto Raptors,51,31
-Washington Wizards,49,33
-Atlanta Hawks,43,39
-Milwaukee Bucks,42,40
-Indiana Pacers,42,40
-Chicago Bulls,41,41
-Miami Heat,41,41
-Detroit Pistons,37,45
-Charlotte Hornets,36,46
-New York Knicks,31,51
-Orlando Magic,29,53
-Philadelphia 76ers,28,54
-Brooklyn Nets,20,62
-Golden State Warriors,67,15
-San Antonio Spurs,61,21
-Houston Rockets,55,27
-Los Angeles Clippers,51,31
-Utah Jazz,51,31
-Oklahoma City Thunder,47,35
-Memphis Grizzlies,43,39
-Portland Trail Blazers,41,41
-Denver Nuggets,40,42
-New Orleans Pelicans,34,48
-Dallas Mavericks,33,49
-Sacramento Kings,32,50
-Minnesota Timberwolves,31,51
-Los Angeles Lakers,26,56
-Phoenix Suns,24,58
+Team,Wins,Losses
+
+BOS,53,29
+
+CLE,51,31
+
+TOR,51,31
+
+WAS,49,33
+
+ATL,43,39
+
+MIL,42,40
+
+IND,42,40
+
+CHI,41,41
+
+MIA,41,41
+
+DET,37,45
+
+CHA,36,46
+
+NYK,31,51
+
+ORL,29,53
+
+PHI,28,54
+
+BKN,20,62
+
+GSW,67,15
+
+SAS,61,21
+
+HOU,55,27
+
+LAC,51,31
+
+UTA,51,31
+
+OKC,47,35
+
+MEM,43,39
+
+POR,41,41
+
+DEN,40,42
+
+NOP,34,48
+
+DAL,33,49
+
+SAC,32,50
+
+MIN,31,51
+
+LAL,26,56
+
+PHX,24,58
