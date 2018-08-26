@@ -1,5 +1,5 @@
 # Nba Fantasy
-## Primerjava dejenske uspešnosti ekip in njihovega fantasy točkovanja
+## Primerjava dejanske uspešnosti ekip in njihovega fantasy točkovanja
 
 Podatke o statistikah igralcev in ekip za sezono 2016/2017 sem povzel s spletnih strani:
 - https://www.basketball-reference.com/leagues/NBA_2017_per_game.html
